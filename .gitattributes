@@ -15,3 +15,7 @@
 *.PDF	 diff=astextplain
 *.rtf	 diff=astextplain
 *.RTF	 diff=astextplain
+
+# Custom to Inno Setup
+*.iss	 diff=astextplain
+*.isl	 diff=astextplain
