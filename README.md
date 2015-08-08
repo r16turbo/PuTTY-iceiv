@@ -1,6 +1,6 @@
 # PuTTY installer
 
-iceiv+putty-installer project
+ICE IV+PuTTY installer project
 
 ## distribution
 
