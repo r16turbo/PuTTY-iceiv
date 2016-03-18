@@ -10,7 +10,7 @@
 ;
 ;  - Maybe a "custom" installation might be useful? Hassle with
 ;    UninstallDisplayIcon, though.
-#define VERSION 20151109
+#define VERSION 20160306
 
 [Setup]
 AppId=PuTTY
