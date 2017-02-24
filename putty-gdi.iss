@@ -10,7 +10,7 @@
 ;
 ;  - Maybe a "custom" installation might be useful? Hassle with
 ;    UninstallDisplayIcon, though.
-#define VERSION 20160306
+#define VERSION 20170221
 
 [Setup]
 AppId=PuTTY
@@ -73,8 +73,6 @@ Source: "putty-gdi-{#VERSION}\x64\plink.exe"; DestDir: "{app}"; Check: Is64BitIn
 ; misc
 Source: "putty-gdi-{#VERSION}\ini\putty.ini"; DestDir: "{app}\ini"; Flags: restartreplace uninsrestartdelete
 Source: "putty-gdi-{#VERSION}\putty.chm"; DestDir: "{app}"; Flags: restartreplace uninsrestartdelete
-Source: "putty-gdi-{#VERSION}\putty.hlp"; DestDir: "{app}"; Flags: restartreplace uninsrestartdelete
-Source: "putty-gdi-{#VERSION}\putty.cnt"; DestDir: "{app}"; Flags: restartreplace uninsrestartdelete
 Source: "putty-gdi-{#VERSION}\README"; DestDir: "{app}"; DestName: "README.txt"; Flags: isreadme restartreplace uninsrestartdelete
 ; japanese
 Source: "putty-gdi-{#VERSION}\ja-JP\putty.lng"; DestDir: "{app}"; Languages: ja; Flags: restartreplace uninsrestartdelete
@@ -89,7 +87,6 @@ Name: "{group}\{cm:PuTTYShortcutName}"; Filename: "{app}\putty.exe"; Comment: {c
 ; We have to fall back from the .chm to the older .hlp file on some Windows
 ; versions.
 Name: "{group}\{cm:PuTTYManualShortcutName}"; Filename: "{app}\putty.chm"; MinVersion: 4.1,5.0
-Name: "{group}\{cm:PuTTYManualShortcutName}"; Filename: "{app}\putty.hlp"; OnlyBelowVersion: 4.1,5.0
 Name: "{group}\{cm:PSFTPShortcutName}"; Filename: "{app}\psftp.exe"; Comment: {cm:PSFTPComment}
 Name: "{group}\{cm:PuTTYgenShortcutName}"; Filename: "{app}\puttygen.exe"; Comment: {cm:PuTTYgenComment}
 Name: "{group}\{cm:PageantShortcutName}"; Filename: "{app}\pageant.exe"; Comment: {cm:PageantComment}
