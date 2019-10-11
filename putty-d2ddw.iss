@@ -10,7 +10,7 @@
 ;
 ;  - Maybe a "custom" installation might be useful? Hassle with
 ;    UninstallDisplayIcon, though.
-#define VERSION 20190321
+#define VERSION 20190724
 
 [Setup]
 AppId=PuTTY
@@ -57,19 +57,19 @@ Name: "source"; Description: "{cm:SourceComponent}"; Types: full
 ; NB: apparently, using long (non-8.3) filenames with restartreplace is a
 ; bad idea. (Not that we do.)
 ; 32bit
-Source: "putty-d2ddw-{#VERSION}\putty.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
-Source: "putty-gdi-{#VERSION}\pageant.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
-Source: "putty-gdi-{#VERSION}\puttygen.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
-Source: "putty-gdi-{#VERSION}\pscp.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
-Source: "putty-gdi-{#VERSION}\psftp.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
-Source: "putty-gdi-{#VERSION}\plink.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
+Source: "putty-d2ddw-{#VERSION}\x86\putty.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
+Source: "putty-gdi-{#VERSION}\x86\pageant.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
+Source: "putty-gdi-{#VERSION}\x86\puttygen.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
+Source: "putty-gdi-{#VERSION}\x86\pscp.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
+Source: "putty-gdi-{#VERSION}\x86\psftp.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
+Source: "putty-gdi-{#VERSION}\x86\plink.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
 ; 64bit
-Source: "putty-d2ddw-{#VERSION}\x64\putty.exe"; DestDir: "{app}"; Check: Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
-Source: "putty-gdi-{#VERSION}\x64\pageant.exe"; DestDir: "{app}"; Check: Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
-Source: "putty-gdi-{#VERSION}\x64\puttygen.exe"; DestDir: "{app}"; Check: Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
-Source: "putty-gdi-{#VERSION}\x64\pscp.exe"; DestDir: "{app}"; Check: Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
-Source: "putty-gdi-{#VERSION}\x64\psftp.exe"; DestDir: "{app}"; Check: Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
-Source: "putty-gdi-{#VERSION}\x64\plink.exe"; DestDir: "{app}"; Check: Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
+Source: "putty-d2ddw-{#VERSION}\putty.exe"; DestDir: "{app}"; Check: Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
+Source: "putty-gdi-{#VERSION}\pageant.exe"; DestDir: "{app}"; Check: Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
+Source: "putty-gdi-{#VERSION}\puttygen.exe"; DestDir: "{app}"; Check: Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
+Source: "putty-gdi-{#VERSION}\pscp.exe"; DestDir: "{app}"; Check: Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
+Source: "putty-gdi-{#VERSION}\psftp.exe"; DestDir: "{app}"; Check: Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
+Source: "putty-gdi-{#VERSION}\plink.exe"; DestDir: "{app}"; Check: Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
 ; misc
 Source: "putty-d2ddw-{#VERSION}\ini\putty.ini"; DestDir: "{app}\ini"; Flags: restartreplace uninsrestartdelete
 Source: "putty-gdi-{#VERSION}\putty.chm"; DestDir: "{app}"; Flags: restartreplace uninsrestartdelete
