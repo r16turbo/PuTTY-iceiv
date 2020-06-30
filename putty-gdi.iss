@@ -1,7 +1,7 @@
 ; -*- no -*-
 ;
 ; -- Inno Setup installer script for PuTTY and its related tools.
-;    Last tested with Inno Setup 5.0.8.
+;    Last tested with Inno Setup 6.0.5.
 ;
 ; TODO for future releases:
 ;
@@ -10,7 +10,7 @@
 ;
 ;  - Maybe a "custom" installation might be useful? Hassle with
 ;    UninstallDisplayIcon, though.
-#define VERSION 20191001
+#define VERSION 20200628
 
 [Setup]
 AppId=PuTTY
@@ -20,7 +20,7 @@ AppVerName=PuTTY GDI
 AppPublisher=MATSUI Nag
 AppPublisherURL=http://ice.hotmint.com/putty/
 AppReadmeFile={app}\README.txt
-DefaultDirName={code:DefaultBaseDir}\PuTTY
+DefaultDirName={autopf}\PuTTY
 DefaultGroupName=PuTTY
 AllowNoIcons=yes
 LicenseFile=putty-gdi-{#VERSION}\LICENCE
@@ -31,16 +31,16 @@ OutputDir=output
 OutputBaseFilename=putty-gdi-{#VERSION}
 Compression=lzma2/max
 SolidCompression=yes
-PrivilegesRequired=none
+PrivilegesRequiredOverridesAllowed=commandline dialog
 ArchitecturesInstallIn64BitMode=x64
-ArchitecturesAllowed=x86 x64
+ArchitecturesAllowed=x64
 
 [Languages]
 Name: "en"; MessagesFile: "compiler:Default.isl,lang\Default.isl"
 Name: "ja"; MessagesFile: "compiler:Languages\Japanese.isl,lang\Japanese.isl"
 
 [Components]
-Name: "PuTTY"; Description: "{cm:PuTTYComment}"; Types: full compact custom; Flags: fixed
+Name: "PuTTY"; Description: "{cm:PuTTYComment}"; Types: full compact; Flags: fixed
 Name: "source"; Description: "{cm:SourceComponent}"; Types: full
 
 [Files]
@@ -56,24 +56,17 @@ Name: "source"; Description: "{cm:SourceComponent}"; Types: full
 ; reboot" option, but the developers have no interest in adding one.
 ; NB: apparently, using long (non-8.3) filenames with restartreplace is a
 ; bad idea. (Not that we do.)
-; 32bit
-Source: "putty-gdi-{#VERSION}\x86\putty.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
-Source: "putty-gdi-{#VERSION}\x86\pageant.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
-Source: "putty-gdi-{#VERSION}\x86\puttygen.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
-Source: "putty-gdi-{#VERSION}\x86\pscp.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
-Source: "putty-gdi-{#VERSION}\x86\psftp.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
-Source: "putty-gdi-{#VERSION}\x86\plink.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
-; 64bit
-Source: "putty-gdi-{#VERSION}\putty.exe"; DestDir: "{app}"; Check: Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
-Source: "putty-gdi-{#VERSION}\pageant.exe"; DestDir: "{app}"; Check: Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
-Source: "putty-gdi-{#VERSION}\puttygen.exe"; DestDir: "{app}"; Check: Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
-Source: "putty-gdi-{#VERSION}\pscp.exe"; DestDir: "{app}"; Check: Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
-Source: "putty-gdi-{#VERSION}\psftp.exe"; DestDir: "{app}"; Check: Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
-Source: "putty-gdi-{#VERSION}\plink.exe"; DestDir: "{app}"; Check: Is64BitInstallMode; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
+; binary
+Source: "putty-gdi-{#VERSION}\putty.exe"; DestDir: "{app}"; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
+Source: "putty-gdi-{#VERSION}\pageant.exe"; DestDir: "{app}"; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
+Source: "putty-gdi-{#VERSION}\puttygen.exe"; DestDir: "{app}"; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
+Source: "putty-gdi-{#VERSION}\pscp.exe"; DestDir: "{app}"; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
+Source: "putty-gdi-{#VERSION}\psftp.exe"; DestDir: "{app}"; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
+Source: "putty-gdi-{#VERSION}\plink.exe"; DestDir: "{app}"; Flags: promptifolder replacesameversion restartreplace uninsrestartdelete
 ; misc
 Source: "putty-gdi-{#VERSION}\ini\putty.ini"; DestDir: "{app}\ini"; Flags: restartreplace uninsrestartdelete
 Source: "putty-gdi-{#VERSION}\putty.chm"; DestDir: "{app}"; Flags: restartreplace uninsrestartdelete
-Source: "putty-gdi-{#VERSION}\README"; DestDir: "{app}"; DestName: "README.txt"; Flags: isreadme restartreplace uninsrestartdelete
+Source: "putty-gdi-{#VERSION}\README"; DestDir: "{app}"; DestName: "README.txt"; Flags: restartreplace uninsrestartdelete
 ; japanese
 Source: "putty-gdi-{#VERSION}\ja-JP\putty.lng"; DestDir: "{app}"; Languages: ja; Flags: restartreplace uninsrestartdelete
 Source: "putty-gdi-{#VERSION}\ja-JP\pageant.lng"; DestDir: "{app}"; Languages: ja; Flags: restartreplace uninsrestartdelete
@@ -112,20 +105,3 @@ Root: HKCU; Subkey: "Software\Classes\PuTTYPrivateKey\DefaultIcon"; ValueType: s
 Root: HKCU; Subkey: "Software\Classes\PuTTYPrivateKey\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\pageant.exe"" ""%1"""; Check: not IsAdminLoggedOn; Tasks: associate
 Root: HKCU; Subkey: "Software\Classes\PuTTYPrivateKey\shell\edit"; ValueType: string; ValueName: ""; ValueData: "{cm:PPKEditLabel}"; Check: not IsAdminLoggedOn; Tasks: associate
 Root: HKCU; Subkey: "Software\Classes\PuTTYPrivateKey\shell\edit\command"; ValueType: string; ValueName: ""; ValueData: """{app}\puttygen.exe"" ""%1"""; Check: not IsAdminLoggedOn; Tasks: associate
-; Add to PATH on NT-class OS?
-
-[UninstallRun]
-; -cleanup-during-uninstall is an undocumented option that tailors the
-; message displayed.
-; XXX: it would be nice if this task weren't run if a silent uninstall is
-;      requested, but "skipifsilent" is disallowed.
-Filename: "{app}\putty.exe"; Parameters: "-cleanup-during-uninstall"; RunOnceId: "PuTTYCleanup"; StatusMsg: "{cm:UninstallStatusMsg}"
-
-[Code]
-function DefaultBaseDir(Param: String) : String;
-begin
-  if IsAdminLoggedOn then
-    Result := ExpandConstant('{pf}')
-  else
-    Result := ExpandConstant('{localappdata}');
-end;
